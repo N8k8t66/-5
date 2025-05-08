@@ -1,0 +1,30 @@
+import time
+import math
+def f_rec(n):
+    if n < 2:
+        return -10
+    return (-1)**n * (f_rec(n-1)/math.factorial(2*n) - 2*f_rec(n-2))
+def f_iter(n):
+    if n < 2:
+        return -10
+    a, b = -10, -10
+    for i in range(2, n+1):
+        c = (-1)**i * (b/math.factorial(2*i) - 2*a)
+        a, b = b, c
+    return b
+n = int(input("До какого n сравнить? "))
+print("n | Рекурсия | Итерация")
+print("-----------------------")
+for i in range(n+1):
+    start = time.time()
+    if i <= 15:
+        fr = f_rec(i)
+    else:
+        fr = "∞"
+    t1 = time.time() - start
+    
+    start = time.time()
+    fi = f_iter(i)
+    t2 = time.time() - start
+    
+    print(f"{i} | {t1:.5f} | {t2:.5f}")
