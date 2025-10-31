@@ -23,7 +23,7 @@ class Btn():
         self.btn.place(x=x0, y=y0, width=size_btn, height=size_btn)
         self.start_btn = Button(text='Start', height = 2, width=8, command=self.click_start)
         self.start_btn.place(rely=0.9, relx=0.8)
-        self.lbl = Label(text='Для начала игры нажмите старт', height=2, width=30)
+        self.lbl = Label(text='Cтарт', height=2, width=30)
         self.lbl.place(relx=0.1, rely=0.9)
         self.wins = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [1, 4, 7], [0, 3, 6], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 
@@ -104,3 +104,4 @@ def draw():
 
 draw()
 window.mainloop()
+
