@@ -104,7 +104,7 @@ class App:
         s.dock_x = (sw // 2) - 40; s.dock_y = s.pad + 60
         s.p, s.e = Board(), Board()
         s.phase = "prep"; s.horiz = True; s.drag = None; s.to_place = {1: 4, 2: 3, 3: 2, 4: 1}
-        s.msg = tk.StringVar(value="F11/ESC - полноэкран.")
+        s.msg = tk.StringVar(value="ESC - полноэкран.")
         tk.Label(root, textvariable=s.msg, bg=COL["bg"], fg=COL["text"], font=("Segoe UI", 12)).place(relx=0.5, y=28, anchor="n")
         tb = tk.Frame(root, bg=COL["bg"])
         tb.place(relx=0.5, rely=1.0, x=0, y=-50, anchor="s")
