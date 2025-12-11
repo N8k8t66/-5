@@ -201,7 +201,7 @@ class App:
         if s.phase != "prep":
             return
         if any(s.to_place.values()):
-            s.msg.set("Pacставь все корабли или ком «Случайно».")
+            s.msg.set("Для начала игры нажми «Случайно».")
             return
         while not s.e.randomize():
             pass
