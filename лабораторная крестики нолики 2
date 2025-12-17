@@ -5,7 +5,7 @@ b = [['', '', ''], ['', '', ''], ['', '', '']]
 btn = [[None, None, None], [None, None, None], [None, None, None]]
 over = False
 
-def newgame():
+def ng():
     global b, over
     b = [['', '', ''], ['', '', ''], ['', '', '']]
     over = False
@@ -14,7 +14,7 @@ def newgame():
             btn[i][j]['text'] = ''
             btn[i][j]['state'] = 'normal'
 
-def checkwin(sym):
+def cwin(sym):
     for i in range(3):
         if b[i][0] == sym and b[i][1] == sym and b[i][2] == sym:
             return True
@@ -27,14 +27,14 @@ def checkwin(sym):
         return True
     return False
 
-def isfull():
+def y():
     for i in range(3):
         for j in range(3):
             if b[i][j] == '':
                 return False
     return True
 
-def move(row, col):
+def v(row, col):
     global over
     if b[row][col] != '':
         return
@@ -45,12 +45,12 @@ def move(row, col):
     btn[row][col]['text'] = 'X'
     btn[row][col]['state'] = 'disabled'
     
-    if checkwin('X'):
+    if cwin('X'):
         messagebox.showinfo("Конец", "Вы выиграли!")
         over = True
         return
     
-    if isfull():
+    if y():
         messagebox.showinfo("Конец", "Ничья!")
         over = True
         return
@@ -66,7 +66,7 @@ def comp():
         for j in range(3):
             if b[i][j] == '':
                 b[i][j] = 'O'
-                if checkwin('O'):
+                if cwin('O'):
                     btn[i][j]['text'] = 'O'
                     btn[i][j]['state'] = 'disabled'
                     messagebox.showinfo("Конец", "Бот выиграл!")
@@ -78,15 +78,15 @@ def comp():
         for j in range(3):
             if b[i][j] == '':
                 b[i][j] = 'X'
-                if checkwin('X'):
+                if cwin('X'):
                     b[i][j] = 'O'
                     btn[i][j]['text'] = 'O'
                     btn[i][j]['state'] = 'disabled'
-                    if checkwin('O'):
+                    if cwin('O'):
                         messagebox.showinfo("Конец", "Бот выиграл!")
                         over = True
                         return
-                    if isfull():
+                    if y():
                         messagebox.showinfo("Конец", "Ничья!")
                         over = True
                         return
@@ -113,11 +113,11 @@ def comp():
                 b[i][j] = 'O'
                 btn[i][j]['text'] = 'O'
                 btn[i][j]['state'] = 'disabled'
-                if checkwin('O'):
+                if cwin('O'):
                     messagebox.showinfo("Конец", "Бот выиграл!")
                     over = True
                     return
-                if isfull():
+                if y():
                     messagebox.showinfo("Конец", "Ничья!")
                     over = True
                     return
@@ -129,9 +129,9 @@ root.title("Крестики-нолики")
 for i in range(3):
     for j in range(3):
         btn[i][j] = tk.Button(root, text='', font=('Arial', 30), width=3, height=1,
-                             command=lambda r=i, c=j: move(r, c))
+                             command=lambda r=i, c=j: v(r, c))
         btn[i][j].grid(row=i, column=j)
 
-tk.Button(root, text="Новая игра", command=newgame).grid(row=3, column=0, columnspan=3, sticky="we")
+tk.Button(root, text="Новая игра", command=ng).grid(row=3, column=0, columnspan=3, sticky="we")
 
 root.mainloop()
