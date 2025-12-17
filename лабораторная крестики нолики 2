@@ -62,7 +62,6 @@ def comp():
     if over:
         return
     
-    # Попытка выиграть
     for i in range(3):
         for j in range(3):
             if b[i][j] == '':
@@ -70,12 +69,11 @@ def comp():
                 if checkwin('O'):
                     btn[i][j]['text'] = 'O'
                     btn[i][j]['state'] = 'disabled'
-                    messagebox.showinfo("Конец", "Компьютер выиграл!")
+                    messagebox.showinfo("Конец", "Бот выиграл!")
                     over = True
                     return
                 b[i][j] = ''
     
-    # Блокировка игрока
     for i in range(3):
         for j in range(3):
             if b[i][j] == '':
@@ -85,7 +83,7 @@ def comp():
                     btn[i][j]['text'] = 'O'
                     btn[i][j]['state'] = 'disabled'
                     if checkwin('O'):
-                        messagebox.showinfo("Конец", "Компьютер выиграл!")
+                        messagebox.showinfo("Конец", "Бот выиграл!")
                         over = True
                         return
                     if isfull():
@@ -95,14 +93,12 @@ def comp():
                     return
                 b[i][j] = ''
     
-    # Центр
     if b[1][1] == '':
         b[1][1] = 'O'
         btn[1][1]['text'] = 'O'
         btn[1][1]['state'] = 'disabled'
         return
     
-    # Углы
     corners = [(0,0), (0,2), (2,0), (2,2)]
     for corner in corners:
         if b[corner[0]][corner[1]] == '':
@@ -111,7 +107,6 @@ def comp():
             btn[corner[0]][corner[1]]['state'] = 'disabled'
             return
     
-    # Любая клетка
     for i in range(3):
         for j in range(3):
             if b[i][j] == '':
@@ -119,7 +114,7 @@ def comp():
                 btn[i][j]['text'] = 'O'
                 btn[i][j]['state'] = 'disabled'
                 if checkwin('O'):
-                    messagebox.showinfo("Конец", "Компьютер выиграл!")
+                    messagebox.showinfo("Конец", "Бот выиграл!")
                     over = True
                     return
                 if isfull():
@@ -140,4 +135,3 @@ for i in range(3):
 tk.Button(root, text="Новая игра", command=newgame).grid(row=3, column=0, columnspan=3, sticky="we")
 
 root.mainloop()
-```
