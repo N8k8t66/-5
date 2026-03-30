@@ -8,7 +8,8 @@ namespace CalculatorApp.Models
 {
     public class CalculatorModel
     {
-        public long Operand1 { get; set; }
+        public decimal Operand1 { get; set; }
         public decimal Operand2 { get; set; }
         public string Operation { get; set; }
-        public long Result { get; set; }
+        public decimal result { get; set; }
+    }
