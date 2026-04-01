@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,8 +8,9 @@ namespace CalculatorApp.Models
 {
     public class CalculatorModel
     {
-        public decimal Operand1 { get; set; }
+        public long Operand1 { get; set; }
         public decimal Operand2 { get; set; }
         public string Operation { get; set; }
         public decimal result { get; set; }
     }
+}
