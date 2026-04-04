@@ -19,24 +19,36 @@ namespace WebApplication1665.Controllers
             return View();
         }
         [HttpPost]
-        public ViewResult RsvpForm(CalculatorModel calc)
+        public ViewResult RsvpForm(CalculatorModel model, string submitButton)
         {
-            if (CalcState.IsValid)
+
+            if (submitButton == "Очистить")
             {
-                switch (calc.Operation)
+                model.Operand1 = 0;
+                model.Operand2 = 0;
+                model.Operation = null;
+                model.result = 0;
+                ModelState.Clear();
+
+                return View(model);
+            }
+
+            if (ModelState.IsValid)
+            {
+                switch (model.Operation)
                 {
                     case "+":
-                        calc.result = calc.Operand1 + calc.Operand2;
+                        model.result = model.Operand1 + model.Operand2;
                         break;
                     case "-":
-                        calc.result = calc.Operand1 + calc.Operand2;
+                        model.result = model.Operand1 + model.Operand2;
                         break;
                     case "*":
-                        calc.result = calc.Operand1 * calc.Operand2;
+                        model.result = model.Operand1 * model.Operand2;
                         break;
                 }
             }
-            return View(calc);
+            return View(model);
         }
     }
 }
