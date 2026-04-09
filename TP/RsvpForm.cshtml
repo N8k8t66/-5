@@ -1,0 +1,36 @@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model WebApplication1665.Models.GuestResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RsvpForm</title>
+    <link rel="viewport" type="text/css" href="~/Content/Styles.css" />
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <p>@Html.LabelFor(x => x.Operand1)</p>
+        <p>Операнд1: @Html.TextBoxFor(x => x.Operand1, new { @class = "calculator-input", step = "1" })</p>
+        <p>@Html.LabelFor(x => x.Operand2)</p>
+        <p>Операнд2: @Html.TextBoxFor(x => x.Operand2, new { @class = "calculator-input", step = "1" })</p>
+        <p>Операция: @Html.TextBoxFor(x => x.Operation)</p>
+        <p>
+            Выберите операцию:
+            @Html.ListBox(x => x.Operation, new[] {
+        new SelectListItem() { "+", "-", "*", "/" }, new { @class = "calculator-input" }})
+        </p>
+        <input type="number" value="Отправить форму RSVP" />
+    }
+</body>
+</html>
