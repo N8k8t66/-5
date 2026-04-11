@@ -18,16 +18,39 @@
 <body>
     @using (Html.BeginForm())
     {
-        <p>@Html.LabelFor(x => x.Operand1)
-        @Html.TextBoxFor(x => x.Operand1, new { @class = "calculator-input", type = "number", step = "1" })</p>
-        <p>@Html.LabelFor(x => x.Operand2)
-        @Html.TextBoxFor(x => x.Operand2, new { @class = "calculator-input", type = "number", step = "1" })</p>
         <p>
-        @Html.LabelFor(x => x.Operand2)
-             @Html.ListBox(x => x.Operation, new[] {
+            @Html.LabelFor(x => x.Operand1)
+            @Html.TextBoxFor(x => x.Operand1, new { @class = "calculator-input", type = "number", step = "1" })
+        </p>
+        <p>
+            @Html.LabelFor(x => x.Operand2)
+            @Html.TextBoxFor(x => x.Operand2, new { @class = "calculator-input", type = "number", step = "1" })
+        </p>
+        <p>
+            @Html.LabelFor(x => x.Operand2)
+            @Html.ListBox(x => x.Operation, new[] {
         new SelectListItem() { "+", "-", "*", "/" }, new { @class = "calculator-input" }})
         </p>
-        <input type="submit" value="Вычислить" />
+        <input type="submit" name="submitButton" value="Вычислить" />
+        <input type="submit" name="submitButton" value="Очистить" />
+
+        if (Model != null)
+        {
+
+            if (Model.Result == ViewBag.ExpectedValue)
+            {
+                <h3>Результат: Совпадает с ожидаемым значением (@ViewBag.ExpectedValue)</h3>
+            }
+            else if (Model.Result != 0)
+            {
+                <h3>Результат: @Model.Result (должно было быть @ViewBag.ExpectedValue)</h3>
+            }
+
+            if (Model.Result != 0)
+            {
+                <h3>Результат: @Model.Result</h3>
+            }
+        }
     }
 </body>
 </html>
