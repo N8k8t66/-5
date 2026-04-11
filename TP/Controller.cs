@@ -32,20 +32,23 @@ namespace WebApplication1665.Controllers
 
                 return View(model);
             }
-
-            if (ModelState.IsValid)
+            if (submitButton == "Вычислить")
             {
-                switch (model.Operation)
+                if (ModelState.IsValid)
                 {
-                    case "+":
-                        model.result = model.Operand1 + model.Operand2;
-                        break;
-                    case "-":
-                        model.result = model.Operand1 + model.Operand2;
-                        break;
-                    case "*":
-                        model.result = model.Operand1 * model.Operand2;
-                        break;
+                    switch (model.Operation)
+                    {
+                        case "+":
+                            model.result = model.Operand1 + model.Operand2;
+                            break;
+                        case "-":
+                            model.result = model.Operand1 + model.Operand2;
+                            break;
+                        case "*":
+                            model.result = model.Operand1 * model.Operand2;
+                            break;
+                    }
+                ViewBag.ExpectedValue = 23;
                 }
             }
             return View(model);
