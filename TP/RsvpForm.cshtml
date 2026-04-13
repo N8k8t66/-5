@@ -18,10 +18,11 @@
 <body>
     @using (Html.BeginForm())
     {
-        <p>
+        <div>
             @Html.LabelFor(x => x.Operand1)
             @Html.TextBoxFor(x => x.Operand1, new { @class = "calculator-input", type = "number", step = "1" })
-        </p>
+        </div>
+
         <p>
             @Html.LabelFor(x => x.Operand2)
             @Html.TextBoxFor(x => x.Operand2, new { @class = "calculator-input", type = "number", step = "1" })
@@ -51,6 +52,15 @@
                 <h3>Результат: @Model.Result</h3>
             }
         }
+    }
+
+    @section CalculatorSection {
+        <div style="margin-top: 20px; padding: 10px; background-color: #e8f4f8; border-radius: 5px;">
+            <p>Информация о калькуляторе</p>
+            <p>Типы операндов: long и demical</p>
+            <p>Выбор операции: ListBox</p>
+            <p>Компоновка подключена без файла _ViewStart.cshtml</p>
+        </div>
     }
 </body>
 </html>
